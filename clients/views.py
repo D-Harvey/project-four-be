@@ -7,7 +7,7 @@ from rest_framework.generics import (
 # from rest_framework.permissions import IsAuthenticated
 
 from .models import Client, Adset
-from .serializers import ClientSerializer, AdsetDetailSerializer
+from .serializers import ClientSerializer, ClientDetailSerializer, AdsetDetailSerializer
 
 class ClientListView(ListCreateAPIView):
 
@@ -18,10 +18,10 @@ class ClientListView(ListCreateAPIView):
 class ClientDetailView(RetrieveUpdateDestroyAPIView):
 
     queryset = Client.objects.all()
-    serializer_class = ClientSerializer
+    serializer_class = ClientDetailSerializer
     # permission_classes = (IsAuthenticated, )
 
-class CampaignListView(ListCreateAPIView):
+class CampaignListView(RetrieveUpdateDestroyAPIView):
 
     queryset = Adset.objects.all()
     serializer_class = AdsetDetailSerializer

@@ -52,9 +52,16 @@ class AdsetDetailSerializer(serializers.ModelSerializer):
         model = Adset
         fields = '__all__'
 
+class ClientDetailSerializer(serializers.ModelSerializer):
+    '''Serializer for outgoing client detailed response'''
+    adset_name = AdsetDetailSerializer(many=True)
+
+    class Meta:
+        model = Client
+        fields = '__all__'
+
 class ClientSerializer(serializers.ModelSerializer):
     '''Serializer for outgoing client response'''
-    adset_name = AdsetDetailSerializer(many=True)
 
     class Meta:
         model = Client
